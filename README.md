@@ -1,11 +1,11 @@
-# People Operations Excellence — XYZ Company
+# People Operations Excellence: XYZ Company
 
-Static, self-contained site: plain HTML, CSS and vanilla JS. No build step, no server.
+Business case and interactive portal by **Qadr Arslan** for the People Operations Excellence Specialist assessment.
 
-Open `index.html` directly, or upload the whole folder to any static host.
+- `index.html` is the whole portal in one self-contained file: styles, scripts, fonts and data are inline, with no build step and no server.
+- `People-Operations-Excellence-XYZ-Qadr-Arslan.pdf` is the printable version.
 
-- **GitHub Pages:** push to a repo, Settings > Pages > deploy from branch root. `.nojekyll` is included.
-- **Netlify / Vercel:** drag the folder in. No build command; publish directory is the root.
-- **Your own site:** upload the folder to a sub-path (for example `/case-study/`). All paths are relative.
+## Hosting
 
-Content lives in `assets/content.js` (the source text, one block per module). Edit it and refresh. It is a `.js` file, not `.json`, so the site also works when opened from disk.
+- **GitHub Pages:** Settings > Pages > Deploy from a branch > `main` / root. `.nojekyll` is included.
+- **Vercel or Netlify:** import the repo; no build command, and the output directory is the root.
