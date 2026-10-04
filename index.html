@@ -8,13 +8,13 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
-.wrap{max-width:1180px;margin:0 auto;padding-inline:20px;padding-block:0 60px}
+.wrap{max-width:1560px;margin:0 auto;padding-inline:clamp(16px,3.5vw,56px);padding-block:0 60px}
 a{color:inherit}
 h1,h2,h3,h4,h5{margin:0;font-weight:600;text-wrap:balance}
 p{margin:0 0 .6em}
 /* header */
 .top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-.top .in{max-width:1180px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:14px}
+.top .in{max-width:1560px;margin:0 auto;padding:10px clamp(16px,3.5vw,56px);display:flex;align-items:center;gap:14px}
 .brand{font:600 13px var(--mono);letter-spacing:.04em;white-space:nowrap}
 .brand small{display:block;font:400 10.5px var(--mono);color:var(--mut);letter-spacing:.02em}
 .tabs{display:flex;gap:2px;overflow-x:auto;flex:1;scrollbar-width:none}
@@ -671,8 +671,72 @@ footer.ft span{font-size:12.5px;color:var(--mut)}
 .lane .lh>b{display:inline}
 
 .mocks.one{grid-template-columns:minmax(0,420px)}
+/* landing + name prompt + welcome strip */
+#landing{display:none;min-height:100vh;min-height:100dvh;align-items:center;justify-content:center;padding:48px clamp(16px,4vw,56px);position:relative;text-align:center}
+html.lp #landing{display:flex}
+html.lp .top,html.lp #root,html.lp .ft,html.lp #welcome{display:none}
+.lp-theme{position:absolute;top:16px;right:16px}
+.lp-in{max-width:880px;width:100%}
+.lp-in[hidden]{display:none}
+.lp-in h1{font:600 clamp(36px,6vw,68px)/1.05 var(--serif);margin:14px 0 10px;letter-spacing:-.01em}
+.lp-sub{font:500 clamp(15px,2vw,20px) var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mut);margin:0 0 14px}
+.lp-by{color:var(--ink2);margin:0 0 40px}
+.lp-choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;text-align:left}
+.lp-card{display:flex;flex-direction:column;gap:6px;align-items:flex-start;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:14px;padding:24px 24px 22px;font:inherit;cursor:pointer;transition:transform .15s,border-color .15s,box-shadow .15s}
+.lp-card:hover,.lp-card:focus-visible{transform:translateY(-2px);border-color:var(--p1);box-shadow:0 8px 28px rgba(0,0,0,.12);outline:none}
+.lp-card b{font-size:18px;font-weight:600}
+.lp-card small{font-size:13.5px;color:var(--mut)}
+.lp-ic{display:grid;place-items:center;width:40px;height:40px;border-radius:10px;background:var(--ink);color:var(--bg);font-size:16px;margin-bottom:8px}
+.lp-vid{aspect-ratio:16/9;width:100%;border:1px solid var(--line);border-radius:12px;background:#000;overflow:hidden}
+.lp-vid iframe,.lp-vid video{width:100%;height:100%;border:0;display:block}
+.lp-soon{display:grid;place-items:center;height:100%;color:#ccc;padding:20px;font-size:15px}
+.lp-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+.lp-btn{background:var(--ink);color:var(--bg);border:1px solid var(--ink);border-radius:9px;padding:10px 20px;font:600 14px var(--sans);cursor:pointer}
+.lp-btn.ghost{background:none;color:var(--ink2);border-color:var(--line);font-weight:500}
+@media (max-width:640px){.lp-choices{grid-template-columns:1fr}}
+#nmWrap{position:fixed;inset:0;z-index:900;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(5,8,15,.6)}
+#nmWrap.show{display:flex}
+#nmCard{width:400px;max-width:100%;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:14px;padding:28px 28px 22px;box-shadow:0 20px 60px rgba(0,0,0,.4)}
+#nmCard h2{font:600 22px var(--serif);margin:6px 0 6px}
+#nmCard p{color:var(--mut);font-size:13.5px;margin:0 0 16px}
+#nmInput{width:100%;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:11px 12px;font:inherit;font-size:15px;outline:none}
+#nmInput:focus{border-color:var(--p1)}
+.nm-row{display:flex;gap:10px;align-items:center;margin-top:14px}
+.nm-skip{background:none;border:0;color:var(--mut);font:inherit;font-size:13.5px;text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:8px 6px}
+.nm-skip:hover{color:var(--ink)}
+.wel{padding-block:18px 0}
+.wel[hidden]{display:none}
+.wel .wi{font:500 clamp(18px,2.4vw,24px) var(--serif);color:var(--ink);border-left:4px solid var(--p1);padding:4px 0 4px 14px}
+
 </style>
-<div class="top"><div class="in"><div class="brand">PEOPLE OPS EXCELLENCE<small>Business case · XYZ Company</small></div><nav class="tabs" id="tabs" aria-label="Sections"></nav><button id="themebtn" class="themebtn" aria-label="Toggle theme">◐</button></div></div><main class="wrap" id="root"></main><footer class="wrap ft"><span>Prepared by</span><b>Qadr Arslan</b><span>People Operations Excellence Specialist assessment</span></footer>
+<script>if(!location.hash)document.documentElement.classList.add('lp')</script>
+<section id="landing" aria-label="Introduction">
+<button id="themebtn2" class="themebtn lp-theme" aria-label="Toggle theme">◐</button>
+<div class="lp-in" id="lpHome">
+<div class="eyebrow">Business case · XYZ Company</div>
+<h1>People Operations Excellence</h1>
+<p class="lp-sub">Case study</p>
+<p class="lp-by">Prepared by <b>Qadr Arslan</b> · People Operations Excellence Specialist assessment</p>
+<div class="lp-choices">
+<button class="lp-card" data-choice="video"><span class="lp-ic">▶</span><b>Watch the walkthrough</b><small>A guided video tour of the case study</small></button>
+<button class="lp-card" data-choice="self"><span class="lp-ic">→</span><b>Explore at your own pace</b><small>Self-paced: open any section, in any order</small></button>
+</div>
+</div>
+<div class="lp-in" id="lpVideo" hidden>
+<div class="eyebrow">Walkthrough</div>
+<h1 style="font-size:clamp(26px,4vw,40px)">People Operations Excellence</h1>
+<div class="lp-vid" id="lpPlayer"></div>
+<div class="lp-actions"><button class="lp-btn" id="lpOpen">Open the case study →</button><button class="lp-btn ghost" id="lpBack">Back</button></div>
+</div>
+</section>
+<div id="nmWrap" role="dialog" aria-modal="true" aria-labelledby="nmHead"><div id="nmCard">
+<div class="eyebrow">Before we begin</div>
+<h2 id="nmHead">What should I call you?</h2>
+<p>Optional. It lets me greet you and know who has taken a look.</p>
+<form id="nmForm" autocomplete="off"><input id="nmInput" type="text" placeholder="Your name" autocomplete="name" maxlength="80" aria-label="Your name">
+<div class="nm-row"><button type="submit" class="lp-btn">Continue</button><button type="button" class="nm-skip" id="nmSkip">Skip</button></div></form>
+</div></div>
+<div class="top"><div class="in"><div class="brand">PEOPLE OPS EXCELLENCE<small>Business case · XYZ Company</small></div><nav class="tabs" id="tabs" aria-label="Sections"></nav><button id="themebtn" class="themebtn" aria-label="Toggle theme">◐</button></div></div><div class="wrap wel" id="welcome" hidden><div class="wi">Welcome <b id="welName"></b> to the XYZ Company case study</div></div><main class="wrap" id="root"></main><footer class="wrap ft"><span>Prepared by</span><b>Qadr Arslan</b><span>People Operations Excellence Specialist assessment</span></footer>
 <script>const D={
  "given": {
   "proc": [
@@ -5170,18 +5234,62 @@ function render(keep) {
   const y = window.scrollY;
   document.querySelectorAll('.tabs a').forEach(a => a.classList.toggle('on', a.dataset.tab === S.tab)); document.body.dataset.tab = S.tab;
   const root = $('#root'); root.innerHTML = body(); wireCharts(root); showDl();
+  const nm = getName(); $('#welName').textContent = nm; $('#welcome').hidden = !(nm && S.tab === 'vision');
   if (keep) window.scrollTo(0, y); else window.scrollTo(0, 0);
 }
 function route() {
-  const h = (location.hash || '#vision').slice(1).split('/'); const t = TABS.find(x => x[0] === h[0]) ? h[0] : 'vision';
-  S.tab = t; if (h[1] && SUBS[t] && SUBS[t].some(s => s[0] === h[1])) S.sub[t] = h[1]; render(false); track();
+  if (!location.hash.slice(1)) { showLanding(); return; }
+  document.documentElement.classList.remove('lp');
+  const h = location.hash.slice(1).split('/'); const t = TABS.find(x => x[0] === h[0]) ? h[0] : 'vision';
+  S.tab = t; if (h[1] && SUBS[t] && SUBS[t].some(s => s[0] === h[1])) S.sub[t] = h[1]; render(false); track('/' + S.tab + (SUBS[S.tab] && S.sub[S.tab] ? '/' + S.sub[S.tab] : ''));
 }
 let lastPath;
-function track() {
-  const p = '/' + S.tab + (SUBS[S.tab] && S.sub[S.tab] ? '/' + S.sub[S.tab] : '');
+function track(p) {
   if (p === lastPath) return; lastPath = p;
   try { window.va && window.va('pageview', { route: p, path: p }); } catch (e) { }
 }
+/* landing page + optional visitor name */
+const VIDEO_URL = ''; // walkthrough video: YouTube/Vimeo/Loom embed link or an .mp4 URL
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xaenedbo';
+const NAME_KEY = 'xyz_visitor_name';
+const safe = (fn, fb) => { try { return fn(); } catch (e) { return fb; } };
+const getName = () => safe(() => localStorage.getItem(NAME_KEY) || '', '');
+let pendingChoice = null;
+function showLanding() {
+  document.documentElement.classList.add('lp'); $('#lpHome').hidden = false; $('#lpVideo').hidden = true; $('#lpPlayer').innerHTML = '';
+  window.scrollTo(0, 0); track('/');
+}
+function showVideo() {
+  $('#lpHome').hidden = true; $('#lpVideo').hidden = false; window.scrollTo(0, 0); track('/walkthrough');
+  const pl = $('#lpPlayer'); pl.innerHTML = '';
+  if (!VIDEO_URL) { pl.innerHTML = '<div class="lp-soon">The walkthrough video is coming soon. You can still explore the case study yourself.</div>'; return; }
+  if (/\.(mp4|webm)(\?|$)/i.test(VIDEO_URL)) { const v = document.createElement('video'); v.src = VIDEO_URL; v.controls = true; v.autoplay = true; pl.appendChild(v); }
+  else { const f = document.createElement('iframe'); f.src = VIDEO_URL; f.allow = 'autoplay; fullscreen; picture-in-picture'; f.allowFullscreen = true; f.title = 'Case study walkthrough'; pl.appendChild(f); }
+}
+function proceed() {
+  const c = pendingChoice; pendingChoice = null;
+  $('#nmWrap').classList.remove('show'); document.body.style.overflow = '';
+  if (c === 'video') showVideo(); else location.hash = '#vision';
+}
+function submitName(name) {
+  name = (name || '').trim().slice(0, 80);
+  if (name) {
+    safe(() => localStorage.setItem(NAME_KEY, name));
+    safe(() => fetch(FORMSPREE_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ name, choice: pendingChoice, submitted_at: new Date().toISOString(), referrer: document.referrer || '(direct)' }) })['catch'](() => { }));
+  }
+  proceed();
+}
+document.querySelectorAll('[data-choice]').forEach(b => b.addEventListener('click', () => {
+  pendingChoice = b.dataset.choice;
+  if (getName()) return proceed();
+  $('#nmWrap').classList.add('show'); document.body.style.overflow = 'hidden'; setTimeout(() => $('#nmInput').focus(), 50);
+}));
+$('#nmForm').addEventListener('submit', e => { e.preventDefault(); submitName($('#nmInput').value); });
+$('#nmSkip').addEventListener('click', () => submitName(''));
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && $('#nmWrap').classList.contains('show')) submitName(''); });
+$('#lpOpen').addEventListener('click', () => { location.hash = '#vision'; });
+$('#lpBack').addEventListener('click', showLanding);
 function rerender() { render(true); }
 function save() { try { localStorage.setItem('xyz-ck', JSON.stringify(S.ck)); } catch (e) { } }
 function updatePrio() {
@@ -5221,7 +5329,7 @@ document.addEventListener('input', e => {
 });
 document.addEventListener('change', e => { const t = e.target; if (t.dataset.ck) { S.ck[t.dataset.ck] = t.checked; save(); $('#cklist').innerHTML = V.checklist(S); } });
 window.addEventListener('hashchange', route);
-$('#themebtn').addEventListener('click', () => { const r = document.documentElement; const cur = r.dataset.theme || (matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light'); r.dataset.theme = cur === 'dark' ? 'light' : 'dark'; });
+document.querySelectorAll('#themebtn,#themebtn2').forEach(b => b.addEventListener('click', () => { const r = document.documentElement; const cur = r.dataset.theme || (matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light'); r.dataset.theme = cur === 'dark' ? 'light' : 'dark'; }));
 $('#tabs').innerHTML = TABS.map(t => `<a href="#${t[0]}" data-tab="${t[0]}">${t[1]}</a>`).join('');
 route(); setTimeout(showDl, 1500); setTimeout(showDl, 6000);
 
