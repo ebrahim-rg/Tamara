@@ -1,0 +1,16 @@
+{
+  "name": "people-operations-excellence",
+  "version": "1.0.0",
+  "description": "People Operations Excellence business case for XYZ Company",
+  "private": true,
+  "scripts": {
+    "lint": "echo 'No linting configured for static HTML'",
+    "test": "echo 'No tests configured'"
+  },
+  "keywords": [],
+  "author": "Qadr Arslan",
+  "license": "ISC",
+  "dependencies": {
+    "@vercel/analytics": "^1.4.1"
+  }
+}
