@@ -5090,7 +5090,7 @@ V.govern = () => {
   <p class="note">R responsible, A accountable, C consulted, I informed.</p>
   <div class="blockhead"><span class="num">5.4</span><h3>Why this model sustains</h3></div>
   <div class="sust">${D.sustain.map((s, i) => `<div class="su"><i>${i + 1}</i><b>${esc(s[0])}</b><span>${esc(s[1])}</span></div>`).join('')}</div>
-  <blockquote class="pg">${esc(D.vision.pg)}<cite>Personal experience, applied here</cite></blockquote>
+  <blockquote class="pg">${esc(D.vision.pg)}<cite>I learnt this form personal experience</cite></blockquote>
   <div class="split"><div><div class="blockhead"><span class="num">5.5</span><h3>Day-91 handover</h3></div><ul class="chk">${['Operating manual: SOPs, KPI definitions, cadence calendar', 'A named backup for every process owner', 'Dashboards run from system data without manual steps', 'Improvement backlog owned by the team, with 5% of its time protected', 'Month-6 check and the months 4\u201312 review dates in the calendar'].map(x => `<li>${x}</li>`).join('')}</ul></div>
   <div><div class="blockhead"><span class="num">5.6</span><h3>Early warning indicators</h3></div><ul class="chk warn">${D.backslide.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div></div>`;
 };
