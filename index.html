@@ -706,6 +706,12 @@ html.lp .top,html.lp #root,html.lp .ft,html.lp #welcome{display:none}
 .nm-skip:hover{color:var(--ink)}
 .wel{padding-block:18px 0}
 .wel[hidden]{display:none}
+.contact{margin:36px 0 8px;padding:22px 24px;border:1px solid var(--line);border-left:4px solid var(--p1);border-radius:10px;background:var(--card)}
+.contact p{font:500 clamp(17px,2vw,21px) var(--serif);margin:0 0 10px}
+.contact ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px 28px}
+.contact a{color:var(--ink);text-underline-offset:3px}
+.contact a:hover{color:var(--p1)}
+@media print{.contact{break-inside:avoid}}
 .wel .wi{font:500 clamp(18px,2.4vw,24px) var(--serif);color:var(--ink);border-left:4px solid var(--p1);padding:4px 0 4px 14px}
 
 </style>
@@ -5113,6 +5119,7 @@ const MOCK = {
   board: () => `<figure class="mock">${MH('Daily scoreboard')}<div class="mb">
   <div class="sb">${[['Overdue', '71', '↓'], ['Oldest ticket', '9 d', '↓'], ['SLA this week', '82%', '↑'], ['Returned', '17%', '↓']].map(r => `<div><b>${r[1]}</b><span>${r[0]} ${r[2]}</span></div>`).join('')}</div><div class="spk">${spark('overdue')}</div><div class="ok">Illustrative values: not the plan or an actual.</div></div><figcaption>One screen for the 15-minute huddle. Same numbers the leaders see.</figcaption></figure>`,
 };
+V.contact = () => `<aside class="contact"><p>For any questions, reach out to me:</p><ul><li><a href="mailto:qadrarslanch@gmail.com">qadrarslanch@gmail.com</a></li><li><a href="tel:+971528062216">+971 52 806 2216</a></li><li><a href="https://www.linkedin.com/in/qadr-arslan/" target="_blank" rel="noopener">linkedin.com/in/qadr-arslan</a></li></ul></aside>`;
 V.appendix = () => `<div class="blockhead"><span class="num">A</span><h3>Assumption register</h3></div>${tbl(['#', 'Topic', 'Assumption'], D.assume.map(a => [`<b>${a[0]}</b>`, `<b>${esc(a[1])}</b>`, esc(a[2])]), 'asm')}
  <div class="blockhead"><span class="num">B</span><h3>Tools: examples only, none required</h3></div>${tbl(['Capability', 'Examples'], D.tools.map(t => [`<b>${esc(t[0])}</b>`, esc(t[1])]))}
  <p class="note">XYZ's own HRIS is not known ${tag('A', 3)}; these are common GCC examples. National platforms stay in place ${tag('A', 15)}.</p>
@@ -5215,7 +5222,7 @@ function body() {
   else if (t === 'after') c = V.after();
   else if (t === 'govern') c = V.govern();
   else c = V.appendix();
-  return head + subnav + c + pager();
+  return head + subnav + c + pager() + (S.tab === 'appendix' ? V.contact() : '');
 }
 async function getDl() {
   if (window.claude && window.claude.use) { try { return await window.claude.use('downloads'); } catch (e) { return null; } }
